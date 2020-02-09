@@ -1,18 +1,53 @@
 import React, {Component} from 'react';
+import SpotifyWebApi from 'spotify-web-api-js';
 import './mainPage.css';
 
 import TopNavBar from '../topNavBar/topNavBar';
 
+const spotifyWebApi = new SpotifyWebApi();
+
 class MainPage extends Component {
+
+    constructor(props){
+        super(props);
+        const params = this.getHashParams();
+        const token = params.access_token;
+        if (token) {
+            spotifyWebApi.setAccessToken(token);
+        }
+        this.state = {
+            loggedIn: token ? true : false,
+            username: '',
+            //Game info
+            status: 'menu',
+            startArtistId: '1w5Kfo2jwwIPruYS2UWh56',// TODO: vchose random artist in genre
+            endArtistId: '',
+            artistPath: [],
+            genre: ['rock', 'grunge']
+        };
+    }
 
     playGameHandler = () => {
         this.props.history.push('/game');
     };
 
+    getHashParams = () => {
+        var hashParams = {};
+        var e, r = /([^&;=]+)=?([^&;]*)/g, q = window.location.hash.substring(1);
+        e = r.exec(q)
+
+        while (e) {
+            hashParams[e[1]] = decodeURIComponent(e[2]);
+            e = r.exec(q);
+        }
+
+        return hashParams;
+    };
+
     render() {
         return (
             <div className="MainPage">
-                <TopNavBar/>
+                <TopNavBar />
                 <div className="content">
                     <h1>SpotiGame</h1>
                     <p className="text">
@@ -24,6 +59,7 @@ class MainPage extends Component {
             </div>
         )
     }
+
 }
 
 
