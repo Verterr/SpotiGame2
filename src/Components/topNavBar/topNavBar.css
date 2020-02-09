@@ -1,3 +1,27 @@
-
+.topNavBar {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 8vh;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Montserrat", sans-serif;
+  background-color: darkgreen;
+  color: #edf5e6;
+}
+.topNavBar .logo {
+  margin: auto 10px;
+  font-size: 30px;
+}
+.topNavBar nav {
+  margin: auto 0;
+  font-size: 25px;
+}
+.topNavBar nav a {
+  color: #edf5e6;
+  text-decoration: none;
+  margin: auto 10px;
+}
 
 /*# sourceMappingURL=topNavBar.css.map */

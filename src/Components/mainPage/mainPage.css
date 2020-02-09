@@ -1,3 +1,18 @@
-
+.MainPage .content {
+  display: flex;
+  flex-direction: column;
+  margin: 30vh 20vw;
+  align-items: center;
+}
+.MainPage .content button {
+  border-radius: 25px;
+  height: 5vh;
+  width: 10vw;
+  font-size: 3vh;
+  outline: none;
+}
+.MainPage .content button:focus, .MainPage .content button:active {
+  border: 1px solid black;
+}
 
 /*# sourceMappingURL=mainPage.css.map */
