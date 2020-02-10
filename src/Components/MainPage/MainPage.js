@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
-import './mainPage.css';
+import './MainPage.css';
 
 import TopNavBar from '../topNavBar/topNavBar';
 

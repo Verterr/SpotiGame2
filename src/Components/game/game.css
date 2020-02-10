@@ -1,0 +1,25 @@
+.game {
+  display: grid;
+  grid-template-columns: 1fr 2fr 0.7fr 2fr 0.7fr 2fr 1fr;
+  grid-template-row: 1fr auto 1fr;
+}
+.game .card {
+  margin-top: 10vh;
+  border: 1px solid black;
+  height: 60vh;
+  border-radius: 20px;
+}
+.game .card1 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.game .card2 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+.game .card3 {
+  grid-column-start: 6;
+  grid-column-end: 7;
+}
+
+/*# sourceMappingURL=game.css.map */

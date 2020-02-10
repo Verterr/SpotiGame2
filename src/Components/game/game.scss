@@ -1,0 +1,23 @@
+.game {
+  display: grid;
+  grid-template-columns: 1fr 2fr 0.7fr 2fr 0.7fr 2fr 1fr;
+  grid-template-row: 1fr auto 1fr;
+  .card {
+    margin-top: 10vh;
+    border: 1px solid black;
+    height: 60vh;
+    border-radius: 20px;
+  }
+  .card1 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+  .card2 {
+    grid-column-start: 4;
+    grid-column-end: 5;
+  }
+  .card3 {
+    grid-column-start: 6;
+    grid-column-end: 7;
+  }
+}
