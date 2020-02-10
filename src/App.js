@@ -1,5 +1,5 @@
 import React from 'react';
-import MainPage from './Components/mainPage/MainPage';
+import MainPage from './Components/MainPage/MainPage';
 import GamePage from "./Components/GamePage/GamePage";
 import {Route, Switch, Redirect} from "react-router-dom";
 
