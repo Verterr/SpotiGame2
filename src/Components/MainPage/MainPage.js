@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
-import './mainPage.css';
+import './MainPage.css';
 
 import TopNavBar from '../topNavBar/topNavBar';
 
@@ -16,14 +16,8 @@ class MainPage extends Component {
             spotifyWebApi.setAccessToken(token);
         }
         this.state = {
-            loggedIn: token ? true : false,
-            username: '',
-            //Game info
-            status: 'menu',
-            startArtistId: '1w5Kfo2jwwIPruYS2UWh56',// TODO: vchose random artist in genre
-            endArtistId: '',
-            artistPath: [],
-            genre: ['rock', 'grunge']
+            token: token ? true : false,
+            loggedIn: false
         };
     }
 
@@ -44,10 +38,19 @@ class MainPage extends Component {
         return hashParams;
     };
 
+    componentDidMount() {
+        console.log("Component did mount");
+        if(this.state.token) {
+            this.setState({
+                loggedIn: true
+            })
+        }
+    }
+
     render() {
         return (
             <div className="MainPage">
-                <TopNavBar />
+                <TopNavBar loggedIn={this.state.loggedIn}/>
                 <div className="content">
                     <h1>SpotiGame</h1>
                     <p className="text">
