@@ -1,6 +1,6 @@
 import React from 'react';
-import MainPage from './Components/mainPage/MainPage';
-import GamePage from "./Components/gamePage/GamePage";
+import MainPage from './Components/MainPage/MainPage';
+import GamePage from "./Components/GamePage/GamePage";
 import {Route, Switch, Redirect} from "react-router-dom";
 
 export default function App() {
