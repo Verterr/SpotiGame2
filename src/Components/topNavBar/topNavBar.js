@@ -5,7 +5,7 @@ const topNavBar = props => {
 
     let links = (
         <nav>
-            <a href="http://localhost:8888/login">Login/Register</a>
+            <a href="http://localhost:8888/login" >Login/Register</a>
             <a href="/">Top Results</a>
         </nav>
     );

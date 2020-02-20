@@ -11,14 +11,31 @@ class MainPage extends Component {
     constructor(props){
         super(props);
         const params = this.getHashParams();
-        const token = params.access_token;
+        let token = params.access_token;
         if (token) {
             spotifyWebApi.setAccessToken(token);
+            localStorage.setItem('token', token);
+            const expirationDate = Date.now() + 3_600_000;
+            localStorage.setItem('expirationDate', expirationDate);
+            token = null;
         }
         this.state = {
             token: token ? true : false,
             loggedIn: false
         };
+    }
+
+    componentDidMount() {
+        const validToken = localStorage.getItem('expirationDate') > (Date.now());
+        if (localStorage.getItem('token') && validToken) {
+            this.setState({
+                loggedIn: true
+            });
+        } else {
+            this.setState({
+                loggedIn: false
+            })
+        }
     }
 
     playGameHandler = () => {
@@ -37,15 +54,6 @@ class MainPage extends Component {
 
         return hashParams;
     };
-
-    componentDidMount() {
-        console.log("Component did mount");
-        if(this.state.token) {
-            this.setState({
-                loggedIn: true
-            })
-        }
-    }
 
     render() {
         return (

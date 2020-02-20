@@ -5,9 +5,9 @@ import Player from "../player/player";
 const cardTemplate = props => {
     return(
         <div className="cardTemplate">
-            <img className="photo" alt="artist"/>
-            <h2 className="name">Artist Name</h2>
-            <p className="genre">Music Genre</p>
+            <img className="photo" alt="artist" src={props.artistImg}/>
+            <h2 className="name">{props.artistName}</h2>
+            <p className="genre">{props.artistGenre}</p>
             <Player/>
         </div>
     )

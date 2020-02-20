@@ -1,13 +1,14 @@
 import React from 'react';
-import MainPage from './Components/mainPage/mainPage';
-import GamePage from "./Components/gamePage/gamePage";
-import {Route, Switch} from "react-router-dom";
+import MainPage from './Components/mainPage/MainPage';
+import GamePage from "./Components/gamePage/GamePage";
+import {Route, Switch, Redirect} from "react-router-dom";
 
 export default function App() {
         let routes = (
             <Switch>
                 <Route path="/game" component={GamePage}/>
                 <Route path="/" exact component={MainPage}/>
+                <Redirect to="/" />
             </Switch>
         );
 
