@@ -13,6 +13,8 @@
 .topNavBar .logo {
   margin: auto 10px;
   font-size: 30px;
+  text-decoration: none;
+  color: #edf5e6;
 }
 .topNavBar nav {
   margin: auto 0;

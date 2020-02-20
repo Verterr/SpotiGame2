@@ -21,7 +21,7 @@ const topNavBar = props => {
 
     return (
         <div className="topNavBar">
-            <div className="logo">Logo</div>
+            <a className="logo" href="/">Logo</a>
             {links}
         </div>
     );
