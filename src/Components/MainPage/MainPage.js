@@ -21,7 +21,7 @@ class MainPage extends Component {
         }
         this.state = {
             token: token ? true : false,
-            loggedIn: false
+            loggedIn: false,
         };
     }
 

@@ -9,19 +9,22 @@ const game = props => {
     return(
       <div className="game">
           <div className="card card1"><Card
-              photo={props.artistImg}
+              artistImg={props.artistImg}
               artistName={props.artistName}
-              genere={props.artistGenre}
+              artistGenre={props.artistGenre}
+              trackPrev={props.trackPrev}
           /></div>
           <div className="card card2"><Card
-              photo={props.photo}
+              artistImg={props.artistImg}
               artistName={props.artistName}
-              genere={props.artistGenre}
+              artistGenre={props.artistGenre}
+              trackPrev={props.trackPrev}
           /></div>
           <div className="card card3"><Card
-              photo={props.photo}
+              artistImg={props.artistImg}
               artistName={props.artistName}
-              genere={props.artistGenre}
+              artistGenre={props.artistGenre}
+              trackPrev={props.trackPrev}
           /></div>
       </div>
     );
