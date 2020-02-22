@@ -1,3 +1,15 @@
-
+.player {
+  margin: 3% 3%;
+  width: auto;
+  height: 20%;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+}
+.player h3 {
+  justify-content: center;
+  margin: auto auto;
+  padding: 0;
+}
 
 /*# sourceMappingURL=player.css.map */

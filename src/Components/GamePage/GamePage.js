@@ -14,7 +14,7 @@ class GamePage extends Component {
     state = {
         token: localStorage.getItem('token'),
         loggedIn: false,
-        artistId: '1w5Kfo2jwwIPruYS2UWh56',
+        artistId: '0PFtn5NtBbbUNbU9EAmIWF',
         artistImg: '',
         artistName: '',
         artistGenre: '',
