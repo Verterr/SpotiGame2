@@ -8,6 +8,11 @@ const game = props => {
 
     return(
       <div className="game">
+          <div className="game-nav">
+              <button>Prev</button>
+              <button>Your Target</button>
+              <button>Next</button>
+          </div>
           <div className="card card1"><Card
               artistImg={props.artistImg}
               artistName={props.artistName}

@@ -4,9 +4,20 @@
   grid-template-row: 1fr auto 1fr;
 }
 .game .card {
-  margin-top: 10vh;
+  margin-top: 10%;
   border: 1px solid black;
-  height: 80vh;
+  height: auto;
+  width: auto;
+  border-radius: 20px;
+}
+.game .game-nav {
+  grid-column-start: 3;
+  grid-column-end: 6;
+  border: 1px solid black;
+  margin-top: 7%;
+  margin-bottom: auto;
+  display: flex;
+  justify-content: space-between;
   border-radius: 20px;
 }
 .game .card1 {

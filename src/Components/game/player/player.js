@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import './player.css';
 
 import ReactHowler from 'react-howler';
-import raf from 'raf';
 
 class Player extends Component {
 
@@ -16,20 +15,6 @@ class Player extends Component {
         this.setState({
             playing: state
         })
-        // this.renderSeekPos()
-    };
-
-    // renderSeekPos () {
-    //     this.setState({
-    //         seek: this.player.seek()
-    //     });
-    //     if (this.state.playing) {
-    //         this._raf = raf(this.renderSeekPos)
-    //     }
-    // }
-
-    styleHandler = () => {
-
     };
 
     render() {
