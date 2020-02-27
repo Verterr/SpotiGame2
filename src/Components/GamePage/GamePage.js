@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import './GamePage.css';
 
-
-import TopNavBar from "../topNavBar/topNavBar";
-import Game from '../game/game';
-import Loading from '../game/loader/loader';
-import SpotifyWebApi from 'spotify-web-api-js';
-const spotifyWebApi = new SpotifyWebApi();
+import TopNavBar from "../TopNavBar/TopNavBar";
+import Game from '../Game/Game';
+import Loading from '../Game/Loader/Loader';
+import {connect} from 'react-redux';
 
 class GamePage extends Component {
 
@@ -22,7 +20,7 @@ class GamePage extends Component {
     };
 
     componentDidMount() {
-        spotifyWebApi.setAccessToken(this.state.token);
+        console.log(this.props.firstArtist);
         const validToken = localStorage.getItem('expirationDate') > (Date.now());
         if (localStorage.getItem('token') && validToken) {
             this.setState({
@@ -34,22 +32,6 @@ class GamePage extends Component {
             });
             this.props.history.push('/');
         }
-        spotifyWebApi.getArtist(this.state.artistId)
-            .then(res => {
-                this.setState({
-                    artistImg: res.images[0].url,
-                    artistName: res.name,
-                    artistGenre: res.genres,
-                });
-            });
-        spotifyWebApi.getArtistTopTracks(this.state.artistId, 'PL')
-            .then(res => {
-               this.setState({
-                   trackPrev: res.tracks,
-                   loading: false
-               });
-                console.log(res);
-            });
     }
     render() {
         let page = <Loading/>;
@@ -68,4 +50,10 @@ class GamePage extends Component {
     }
 }
 
-export default GamePage;
+const mapStateToProps = state => {
+    return {
+        firstArtist: state.firstArtist,
+    }
+};
+
+export default connect(mapStateToProps, null)(GamePage);

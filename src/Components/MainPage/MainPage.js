@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import './MainPage.css';
 
-import TopNavBar from '../topNavBar/topNavBar';
+import TopNavBar from '../TopNavBar/TopNavBar';
+import {connect} from 'react-redux';
+import * as actions from "../../store/actions/initGame";
 
 const spotifyWebApi = new SpotifyWebApi();
 
@@ -39,6 +41,8 @@ class MainPage extends Component {
     }
 
     playGameHandler = () => {
+        this.props.renderGame();
+        setTimeout(() => console.log(this.props.firstArtist), 2000);
         this.props.history.push('/game');
     };
 
@@ -65,7 +69,7 @@ class MainPage extends Component {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor tortor nec urna viverra commodo. In at dignissim enim. Nam ornare auctor lorem, vitae rutrum massa blandit quis. Nullam congue ultrices sem, ut faucibus odio facilisis ut. In id dapibus nunc. Mauris condimentum ipsum non tellus egestas dapibus. Ut luctus eros non auctor elementum. Proin feugiat tincidunt auctor. Donec ante ipsum, iaculis eget lorem eu, feugiat pulvinar nunc. Etiam arcu lacus, varius pellentesque aliquam at, pharetra ac ligula. Curabitur suscipit purus ut mi tempus cursus.
                     </p>
                     <br/>
-                    <button onClick={this.playGameHandler}>Graj</button>
+                    <button onClick={() => this.playGameHandler()}>Graj</button>
                 </div>
             </div>
         )
@@ -73,5 +77,16 @@ class MainPage extends Component {
 
 }
 
+const mapStateToProps = state => {
+    return {
+        firstArtist: state.firstArtist
+    }
+};
 
-export default MainPage;
+const mapDispatchToProps = dispatch => {
+    return {
+        renderGame: () => dispatch(actions.renderGame())
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

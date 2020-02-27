@@ -1,8 +1,8 @@
 import React from "react";
 
-import Card from './cardTemplate/cardTemplate';
+import Card from './CardTemplate/CardTemplate';
 
-import './game.css';
+import './Game.css';
 
 const game = props => {
 

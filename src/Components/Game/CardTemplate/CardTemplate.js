@@ -1,8 +1,8 @@
 import React from "react";
 
-import './cardTemplate.css';
+import './CardTemplate.css';
 
-import Player from "../player/player";
+import Player from "../Player/Player";
 
 const cardTemplate = props => {
     return(

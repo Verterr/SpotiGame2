@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import './player.css';
+import './Player.css';
 
 import ReactHowler from 'react-howler';
 

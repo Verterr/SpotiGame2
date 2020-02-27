@@ -1,5 +1,5 @@
 import React from 'react';
-import './topNavBar.css';
+import './TopNavBar.css';
 
 const topNavBar = props => {
 
