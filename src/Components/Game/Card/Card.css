@@ -1,25 +1,25 @@
-.cardTemplate {
+.card {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
 }
-.cardTemplate .artist-name {
+.card .artist-name {
   margin: 3% auto;
 }
-.cardTemplate .genres-box {
+.card .genres-box {
   margin-left: 3%;
   margin-right: 3%;
 }
-.cardTemplate .genres-box .genre-name {
+.card .genres-box .genre-name {
   margin-bottom: 0;
 }
-.cardTemplate .genres-box .genre {
+.card .genres-box .genre {
   margin-top: 0;
 }
-.cardTemplate .photo {
+.card .photo {
   width: 100%;
   border-radius: 20px;
 }
 
-/*# sourceMappingURL=CardTemplate.css.map */
+/*# sourceMappingURL=Card.css.map */

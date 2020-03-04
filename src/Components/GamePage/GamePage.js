@@ -11,16 +11,10 @@ class GamePage extends Component {
 
     state = {
         token: localStorage.getItem('token'),
-        loggedIn: false,
-        artistId: '0PFtn5NtBbbUNbU9EAmIWF',
-        artistImg: '',
-        artistName: '',
-        artistGenre: '',
-        loading: true
+        loggedIn: false
     };
 
     componentDidMount() {
-        console.log(this.props.firstArtist);
         const validToken = localStorage.getItem('expirationDate') > (Date.now());
         if (localStorage.getItem('token') && validToken) {
             this.setState({
@@ -35,11 +29,8 @@ class GamePage extends Component {
     }
     render() {
         let page = <Loading/>;
-        if (!this.state.loading) {
-            page = <Game artistImg={this.state.artistImg}
-                         artistName={this.state.artistName}
-                         artistGenre={this.state.artistGenre}
-                         trackPrev={this.state.trackPrev}/>
+        if (!this.props.loading) {
+            page = <Game/>
         }
         return (
             <div className="gamePage">
@@ -53,6 +44,8 @@ class GamePage extends Component {
 const mapStateToProps = state => {
     return {
         firstArtist: state.firstArtist,
+        lastArtist: state.lastArtist,
+        loading: state.loading
     }
 };
 

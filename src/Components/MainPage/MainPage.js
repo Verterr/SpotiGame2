@@ -4,7 +4,7 @@ import './MainPage.css';
 
 import TopNavBar from '../TopNavBar/TopNavBar';
 import {connect} from 'react-redux';
-import * as actions from "../../store/actions/initGame";
+import * as actions from "../../store/actions/gameLogic";
 
 const spotifyWebApi = new SpotifyWebApi();
 
@@ -42,7 +42,6 @@ class MainPage extends Component {
 
     playGameHandler = () => {
         this.props.renderGame();
-        setTimeout(() => console.log(this.props.firstArtist), 2000);
         this.props.history.push('/game');
     };
 
