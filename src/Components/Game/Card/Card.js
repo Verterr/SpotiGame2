@@ -1,31 +1,49 @@
-import React from "react";
+import React, {Component} from "react";
 
 import './Card.css';
 
 import Player from "../Player/Player";
+import Loader from "../Loader/Loader";
 
 import {getArtistTracks} from "../../../Containers/Game/gameLogic";
 
-const card = props => {
+class Card extends Component {
 
-    let tracks;
-    getArtistTracks(props.artist.id).then(res => {
-        tracks = res;
-    });
+    state = {
+      tracks: '',
+      loading: true
+    };
 
-    return(
-        <div className="cardTemplate">
-            <img className="photo" alt="artist" src={props.artist.images[0].url}/>
-            <h2 className="artist-name">{props.artist.name}</h2>
-            <div className="genres-box">
-                <h3 className="genre-name">Genres:</h3>
-                <p className="genre">{props.artist.genres.join(', ')}</p>
+    componentDidMount() {
+        getArtistTracks(this.props.artist.id)
+            .then(res =>{
+                this.setState({tracks: res.tracks, loading: false})
+            })
+    }
+
+    render() {
+        console.log(this.state.tracks);
+        console.log('Rendered');
+        let card = <Loader/>;
+        if(!this.state.loading) {
+            card = (<div>
+                        <img className="photo" alt="artist" src={this.props.artist.images[0].url}/>
+                        <h2 className="artist-name">{this.props.artist.name}</h2>
+                        <div className="genres-box">
+                            <h3 className="genre-name">Genres:</h3>
+                            <p className="genre">{this.props.artist.genres.join(', ')}</p>
+                        </div>
+                            <Player trackPrev={this.state.tracks[0]}/>
+                            <Player trackPrev={this.state.tracks[1]}/>
+                            <Player trackPrev={this.state.tracks[2]}/>
+                    </div>)
+        }
+        return(
+            <div className="cardTemplate">
+                {card}
             </div>
-            {/*<Player trackPrev={props.trackPrev[0]}/>*/}
-            {/*<Player trackPrev={props.trackPrev[1]}/>*/}
-            {/*<Player trackPrev={props.trackPrev[2]}/>*/}
-        </div>
-    )
+        )
+    }
 };
 
-export default card;
+export default Card;

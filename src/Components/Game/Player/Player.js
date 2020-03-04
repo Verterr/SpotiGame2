@@ -8,7 +8,6 @@ class Player extends Component {
 
     state = {
         playing: false,
-        duration: this.props.trackPrev.duration_ms
     };
 
     playHandler = (state) => {
@@ -19,7 +18,6 @@ class Player extends Component {
 
     render() {
         return (
-
             <div className="player" onMouseEnter={() => this.playHandler(true)} onMouseLeave={() => this.playHandler(false)}>
                 <h3>{this.props.trackPrev.name}</h3>
                 <ReactHowler
