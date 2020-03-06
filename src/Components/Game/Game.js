@@ -10,15 +10,16 @@ class Game extends Component {
 
     state = {
         currentArtist: this.props.firstArtist,
-        relatedArtists: this.props.relatedArtists.artists
+        relatedArtists: this.props.relatedArtists.artists,
+        i: 2
     };
 
     nextArtist = () => {
-
+        this.setState({i: this.state.i + 1});
     };
 
     prevArtist = () => {
-
+        this.setState({i: this.state.i - 1});
     };
 
     render() {
@@ -27,18 +28,18 @@ class Game extends Component {
         return(
             <div className="game">
                 <div className="game-nav">
-                    <button>Prev</button>
+                    <button onClick={this.prevArtist}>Prev</button>
                     <button>Your Target</button>
-                    <button>Next</button>
+                    <button onClick={this.nextArtist}>Next</button>
                 </div>
                 <div className="card card1"><Card
-                    artist={this.state.relatedArtists[0]}
+                    artist={this.state.relatedArtists[this.state.i-2]}
                 /></div>
                 <div className="card card2"><Card
-                    artist={this.state.relatedArtists[1]}
+                    artist={this.state.relatedArtists[this.state.i-1]}
                 /></div>
                 <div className="card card3"><Card
-                    artist={this.state.relatedArtists[2]}
+                    artist={this.state.relatedArtists[this.state.i]}
                 /></div>
             </div>
         );
