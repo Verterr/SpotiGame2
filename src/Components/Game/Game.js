@@ -15,11 +15,15 @@ class Game extends Component {
     };
 
     nextArtist = () => {
-        this.setState({i: this.state.i + 1});
+        if(this.state.i < this.state.relatedArtists.length - 2){
+            this.setState({i: this.state.i + 1});
+        }
     };
 
     prevArtist = () => {
-        this.setState({i: this.state.i - 1});
+        if(this.state.i > 2){
+            this.setState({i: this.state.i - 1});
+        }
     };
 
     render() {
