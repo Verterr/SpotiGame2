@@ -9,20 +9,9 @@ import gameLogicReducer from './store/reducers/gameLogicReducer';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 
-const logger = store => {
-    return next => {
-        return action => {
-            console.log('[Middleware] Dispatching', action);
-            const result = next(action);
-            console.log('[Middleware] 12_next state', store.getState());
-            return result;
-        }
-    }
-};
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(gameLogicReducer, composeEnhancers(applyMiddleware(logger, thunk)));
+const store = createStore(gameLogicReducer, composeEnhancers(applyMiddleware(thunk)));
 
 
 ReactDOM.render(

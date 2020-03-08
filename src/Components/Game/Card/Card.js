@@ -17,13 +17,11 @@ class Card extends Component {
     componentDidMount() {
         getArtistTracks(this.props.artist.id)
             .then(res =>{
-                this.setState({tracks: res.tracks, loading: false})
+                this.setState({tracks: res.tracks, loading: false});
             })
     }
 
     render() {
-        console.log(this.state.tracks);
-        console.log('Rendered');
         let card = <Loader/>;
         if(!this.state.loading) {
             card = (<div>

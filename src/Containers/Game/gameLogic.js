@@ -8,3 +8,9 @@ export const getArtistTracks = async id  => {
         });
 };
 
+export const getRelatedArtist = async id => {
+    return await spotifyWebApi.getArtistRelatedArtists(id)
+        .then(res => {
+            return res;
+        })
+};
