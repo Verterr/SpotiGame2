@@ -11,7 +11,6 @@ import './Game.css';
 class Game extends Component {
 
     state = {
-        currentArtist: this.props.firstArtist,
         relatedArtists: '',
         i: 2,
         loading: true
@@ -29,8 +28,18 @@ class Game extends Component {
         }
     };
 
-    componentDidMount() {
-        getRelatedArtist(this.state.currentArtist.id)
+    componentWillMount() {
+        getRelatedArtist(this.props.currentArtist.id)
+            .then(res => {
+                this.setState({relatedArtists: res.artists, loading: false});
+                console.log(res);
+            });
+    }
+
+     setCurrentArtistHandler(id) {
+         this.setState({loading: true});
+         this.props.setCurrentArtist(id);
+         getRelatedArtist(id)
             .then(res => {
                 this.setState({relatedArtists: res.artists, loading: false});
                 console.log(res);
@@ -38,11 +47,8 @@ class Game extends Component {
     }
 
     render() {
-        console.log("RENDERED");
         let page = <Loader/>;
         if(!this.state.loading) {
-            console.log(this.state.relatedArtists);
-            console.log("RENDER LOADING PAGE");
             page = (
                 <div className="game">
                     <div className="game-nav">
@@ -50,15 +56,24 @@ class Game extends Component {
                         <button>Your Target</button>
                         <button onClick={this.nextArtist}>Next</button>
                     </div>
-                    <div className="card card1"><Card
-                        artist={this.state.relatedArtists[this.state.i-2]}
-                    /></div>
-                    <div className="card card2"><Card
-                        artist={this.state.relatedArtists[this.state.i-1]}
-                    /></div>
-                    <div className="card card3"><Card
-                        artist={this.state.relatedArtists[this.state.i]}
-                    /></div>
+                    <div className="card card1">
+                        <Card artist={this.state.relatedArtists[this.state.i-2]}/>
+                        <button className="selectArtistButton"
+                                onClick={() => this.setCurrentArtistHandler(this.state.relatedArtists[this.state.i-2].id)}
+                        >SELECT</button>
+                    </div>
+                    <div className="card card2">
+                        <Card artist={this.state.relatedArtists[this.state.i-1]}/>
+                        <button className="selectArtistButton"
+                                onClick={() => this.setCurrentArtistHandler(this.state.relatedArtists[this.state.i-1].id)}
+                        >SELECT</button>
+                    </div>
+                    <div className="card card3">
+                        <Card artist={this.state.relatedArtists[this.state.i]}/>
+                        <button className="selectArtistButton"
+                        onClick={() => this.setCurrentArtistHandler(this.state.relatedArtists[this.state.i].id)}
+                        >SELECT</button>
+                    </div>
                 </div>
             );
         }
@@ -68,13 +83,15 @@ class Game extends Component {
 
 const mapStateToProps = state => {
     return {
-        firstArtist: state.firstArtist
+        firstArtist: state.firstArtist,
+        currentArtist: state.currentArtist,
+        loading: state.loading
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadingPauser: () => dispatch(actions.loadingPauser())
+        setCurrentArtist: (id) => dispatch(actions.setCurrentArtist(id))
     }
 };
 

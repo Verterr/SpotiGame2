@@ -12,7 +12,7 @@ export const renderGame = () => {
 
     return dispatch => {
 
-        dispatch(getCurrentArtist(firstArtistId));
+        dispatch(getFirstArtist(firstArtistId));
         // dispatch(loadingPauser());
         // dispatch(getRelatedArtists(firstArtistId));
         // let resolveFinalArray = ['0PFtn5NtBbbUNbU9EAmIWF'];
@@ -31,22 +31,32 @@ export const renderGame = () => {
         }
 };
 
-export const getCurrentArtist = id => {
+export const getFirstArtist = id => {
     return dispatch => {
         spotifyWebApi.getArtist(id)
             .then(res => {
-                dispatch(initFirstArtist(res));
+                dispatch({
+                    type: actionTypes.INIT_FIRST_ARTIST,
+                    firstArtist: res
+                });
                 dispatch(loadingPauser());
             });
     };
 };
 
-export const initFirstArtist = (firstArtist) => {
-    return {
-        type: actionTypes.INIT_FIRST_ARTIST,
-        firstArtist: firstArtist
-    }
+export const setCurrentArtist= id => {
+    return dispatch => {
+        spotifyWebApi.getArtist(id)
+            .then(res => {
+                dispatch({
+                    type: actionTypes.SET_CURRENT_ARTIST,
+                    currentArtist: res
+                });
+                dispatch(loadingPauser());
+            });
+    };
 };
+
 
 export const initTargetArtist = targetArtist => {
     return {
