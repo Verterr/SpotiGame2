@@ -1,18 +1,28 @@
 import * as actionTypes from './actionTypes';
 import SpotifyWebApi from 'spotify-web-api-js';
+import {getRelatedArtist} from '../../Containers/Game/gameLogic';
+
 const spotifyWebApi = new SpotifyWebApi();
 
-
 export const renderGame = () => {
-
-    const firstArtistId = '0PFtn5NtBbbUNbU9EAmIWF';
 
     spotifyWebApi.setAccessToken(localStorage.getItem('token'));
 
 
     return dispatch => {
 
-        dispatch(getFirstArtist(firstArtistId));
+        spotifyWebApi.getRecommendations({seed_genres: 'rock', limit: 20})
+            .then(res => {
+                let firstArtist = res.tracks[1].artists[0].id;
+                dispatch(getFirstArtist(firstArtist));
+                for(let i=0; i<5; i++){
+                    getRelatedArtist(firstArtist).then(res => {
+                        firstArtist = res.artists[0].id;
+                        console.log(firstArtist);
+                    })
+                }
+            });
+        // dispatch(getFirstArtist(firstArtistId));
         // dispatch(loadingPauser());
         // dispatch(getRelatedArtists(firstArtistId));
         // let resolveFinalArray = ['0PFtn5NtBbbUNbU9EAmIWF'];
