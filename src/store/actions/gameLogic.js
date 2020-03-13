@@ -13,14 +13,21 @@ export const renderGame = () => {
 
         spotifyWebApi.getRecommendations({seed_genres: 'rock', limit: 20})
             .then(res => {
-                let firstArtist = res.tracks[1].artists[0].id;
-                dispatch(getFirstArtist(firstArtist));
-                for(let i=0; i<5; i++){
-                    getRelatedArtist(firstArtist).then(res => {
-                        firstArtist = res.artists[0].id;
-                        console.log(firstArtist);
-                    })
-                }
+                let firstArtist = res.tracks[1].artists[0];
+                dispatch(getFirstArtist(firstArtist.id));
+                getRelatedArtist(firstArtist.id).then(res => {
+                        getRelatedArtist(res.artists[0].id).then(res => {
+                            getRelatedArtist(res.artists[0].id).then(res => {
+                                getRelatedArtist(res.artists[0].id).then(res => {
+                                    getRelatedArtist(res.artists[0].id).then(res => {
+                                        console.log(res.artists[0]);
+                                        dispatch(initTargetArtist(res.artists[0]));
+                                        dispatch(loadingPauser());
+                                    })
+                                })
+                            })
+                        })
+                    });
             });
         // dispatch(getFirstArtist(firstArtistId));
         // dispatch(loadingPauser());
@@ -49,7 +56,6 @@ export const getFirstArtist = id => {
                     type: actionTypes.INIT_FIRST_ARTIST,
                     firstArtist: res
                 });
-                dispatch(loadingPauser());
             });
     };
 };
