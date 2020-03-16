@@ -32,7 +32,6 @@ class Game extends Component {
         getRelatedArtist(this.props.currentArtist.id)
             .then(res => {
                 this.setState({relatedArtists: res.artists, loading: false});
-                console.log(res);
             });
     }
 
@@ -42,7 +41,6 @@ class Game extends Component {
          getRelatedArtist(id)
             .then(res => {
                 this.setState({relatedArtists: res.artists, loading: false});
-                console.log(res);
             });
     }
 
