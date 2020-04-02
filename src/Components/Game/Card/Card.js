@@ -33,7 +33,7 @@ class Card extends Component {
     render() {
         let card = <Loader/>;
         if(!this.state.loading) {
-            console.log("Card rerender");
+            console.log(this.props.artist.images);
             card = (<div>
                         <img className="photo" alt="artist" src={this.props.artist.images[0].url}/>
                         <h2 className="artist-name">{this.props.artist.name}</h2>
