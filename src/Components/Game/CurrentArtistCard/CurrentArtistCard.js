@@ -8,13 +8,13 @@ import './CurrentArtistCard.css';
 class CurrentArtistCard extends Component {
 
     render() {
-        console.log("Current Artist Card opened");
         return(
             <div className="cardPage">
                 <div className="cardContent">
+                    <button className="currentCardCloseButton" onClick={this.props.closeCurrentArtistPage}>X</button>
                     <div className="firstCard">
                         <h2>First Card</h2>
-                        <Card artist={this.props.firstArtist}/>/>
+                        <Card artist={this.props.firstArtist}/>
                     </div>
                     <div className="currentCard">
                         <h2>Current Card</h2>

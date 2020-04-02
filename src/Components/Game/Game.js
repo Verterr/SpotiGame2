@@ -43,6 +43,10 @@ class Game extends Component {
          this.setState({currentArtistPageOpen: true});
     };
 
+    closeCurrentArtistPage = () => {
+        this.setState({currentArtistPageOpen: false})
+    };
+
     componentWillMount() {
         getRelatedArtist(this.props.currentArtist.id)
             .then(res => {
@@ -54,7 +58,7 @@ class Game extends Component {
         let page = <Loader/>;
         if(!this.state.loading) {
             if(this.state.currentArtistPageOpen) {
-                page = <CurrentArtistCard/>
+                page = <CurrentArtistCard closeCurrentArtistPage={() => this.closeCurrentArtistPage()}/>
             } else {
                 page = (
                     <div className="game">

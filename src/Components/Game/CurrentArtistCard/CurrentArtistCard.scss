@@ -1,5 +1,41 @@
 .cardPage {
-  height: 100vh;
+  height: 92vh;
   width: 100vw;
-  background: rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .cardContent {
+    background: white;
+    border-radius: 20px;
+    width: 80vw;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.7fr 2fr 0.7fr 2fr 1fr;
+    .cardTemplate {
+      margin-bottom: 5vh;
+      border: 1px solid black;
+      height: 90%;
+      width: auto;
+      max-height: 80vh;
+      max-width: 20vw;
+      border-radius: 20px;
+    }
+    .firstCard {
+      grid-column: 2;
+    }
+    .currentCard {
+      grid-column: 4;
+    }
+    .targetCard {
+      grid-column: 6;
+    }
+    .currentCardCloseButton {
+      position: relative;
+      grid-column: 7;
+      right: 0;
+      top: 2vh;
+      max-width: 5vw;
+    }
+  }
 }
