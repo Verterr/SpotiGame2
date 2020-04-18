@@ -1,11 +1,12 @@
 import React from 'react';
 import './TopNavBar.css';
+import {loginURL} from '../../Containers/Auth/auth';
 
 const topNavBar = props => {
 
     let links = (
         <nav>
-            <a href="http://localhost:8888/login" >Login/Register</a>
+            <a href={loginURL} >Login/Register</a>
             <a href="/">Top Results</a>
         </nav>
     );
