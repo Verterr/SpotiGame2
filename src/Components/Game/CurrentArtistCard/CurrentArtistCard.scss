@@ -1,17 +1,18 @@
 .cardPage {
-  height: 92vh;
+  height: 90vh;
   width: 100vw;
   background: rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   .cardContent {
     background: white;
     border-radius: 20px;
     width: 80vw;
     border: 1px solid black;
     display: grid;
-    grid-template-columns: 1fr 2fr 0.7fr 2fr 0.7fr 2fr 1fr;
+    grid-template-columns: 0.75fr 2.3fr 0.5fr 2.3fr 0.5fr 2.3fr 0.75fr;
     .cardTemplate {
       margin-bottom: 5vh;
       border: 1px solid black;

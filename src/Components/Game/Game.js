@@ -58,7 +58,7 @@ class Game extends Component {
         let page = <Loader/>;
         if(!this.state.loading) {
             if(this.state.currentArtistPageOpen) {
-                page = <CurrentArtistCard closeCurrentArtistPage={() => this.closeCurrentArtistPage()}/>
+                page = <CurrentArtistCard closeCurrentArtistPage={() => this.setState({currentArtistPageOpen: false})}/>
             } else {
                 page = (
                     <div className="game">
