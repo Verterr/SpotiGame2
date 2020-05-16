@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import './MainPage.css';
 
+import {Button} from "@material-ui/core";
 import TopNavBar from '../TopNavBar/TopNavBar';
 import {connect} from 'react-redux';
 import * as actions from "../../store/actions/gameLogic";
@@ -58,17 +59,27 @@ class MainPage extends Component {
         return hashParams;
     };
 
+    mainButtonHandler = () => {
+        if(this.state.loggedIn) {
+            this.props.renderGame();
+            this.props.history.push('/game');
+        } else {
+            this.props.push()
+        }
+    }
+
     render() {
         return (
             <div className="MainPage">
-                <TopNavBar loggedIn={this.state.loggedIn}/>
-                <div className="content">
+                <video className="VideoBG" autoPlay={true} loop={true}>
+                    <source src={require("../../Assets/Video/videoBG.mp4")} type="video/mp4"/>
+                    Your browser does not support the video tag.
+                </video>
+                <div className="center-container">
                     <h1>SpotiGame</h1>
-                    <p className="text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor tortor nec urna viverra commodo. In at dignissim enim. Nam ornare auctor lorem, vitae rutrum massa blandit quis. Nullam congue ultrices sem, ut faucibus odio facilisis ut. In id dapibus nunc. Mauris condimentum ipsum non tellus egestas dapibus. Ut luctus eros non auctor elementum. Proin feugiat tincidunt auctor. Donec ante ipsum, iaculis eget lorem eu, feugiat pulvinar nunc. Etiam arcu lacus, varius pellentesque aliquam at, pharetra ac ligula. Curabitur suscipit purus ut mi tempus cursus.
-                    </p>
-                    <br/>
-                    <button onClick={() => this.playGameHandler()}>Graj</button>
+                    <Button onClick={this.mainButtonHandler}>
+                        {this.state.loggedIn ? "Start Game" : "Login with Spotify"}
+                    </Button>
                 </div>
             </div>
         )

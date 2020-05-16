@@ -1,20 +1,32 @@
 .MainPage {
-  .content {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  .VideoBG {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background-size: cover;
+    overflow: hidden;
+  }
+  .center-container {
+    align-self: center;
+    font-size: 40px;
     display: flex;
     flex-direction: column;
-    margin: 30vh 20vw;
-    align-items: center;
-
-    button {
-      border-radius: 25px;
-      height: 5vh;
-      width: 10vw;
-      font-size: 3vh;
-      outline: none;
+    justify-content: center;
+    h1 {
+      color: #ffffff;
     }
-
-    button:focus, button:active {
-      border: 1px solid black;
+    Button {
+      background: #1DB954;
+      color: #ffffff;
     }
   }
 }
