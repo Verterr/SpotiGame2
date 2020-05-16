@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import './MainPage.css';
+import {loginURL} from "../../Containers/Auth/auth";
 
 import {Button} from "@material-ui/core";
 import TopNavBar from '../TopNavBar/TopNavBar';
@@ -64,7 +65,7 @@ class MainPage extends Component {
             this.props.renderGame();
             this.props.history.push('/game');
         } else {
-            this.props.push()
+            window.location.href = loginURL;
         }
     }
 
