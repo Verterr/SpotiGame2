@@ -18,7 +18,7 @@ class Player extends Component {
 
     render() {
         return (
-            <div className="player" onMouseEnter={() => this.playHandler(true)} onMouseLeave={() => this.playHandler(false)}>
+            <div className="player" onClick={() => this.playHandler(!this.state.playing)}>
                 <h3>{this.props.trackPrev.name}</h3>
                 <ReactHowler
                     format={['mp3']}
