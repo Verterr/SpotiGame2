@@ -38,8 +38,10 @@ class Card extends Component {
             console.log(this.props.artist.images);
             card = (<div>
                     <CardTemplate className="cardTemplate">
-                        <CardHeader title={this.props.artist.name} subheader={`Genres: ${this.props.artist.genres.filter((value, i) => i<=3).join(', ')}`}/>
-                        <img className="artistPhoto" src={this.props.artist.images[1].url} alt={this.props.artist.name}/>
+                        <CardHeader className="artistHeader" title={this.props.artist.name} subheader={`Genres: ${this.props.artist.genres.filter((value, i) => i<=3).join(', ')}`}/>
+                        <div className="artistPhoto">
+                            <img src={this.props.artist.images[1].url} alt={this.props.artist.name}/>
+                        </div>
                         <CardContent className="cardPlayers">
                             <Player trackPrev={this.state.tracks[0]} volume={this.props.volume}/>
                             <Player trackPrev={this.state.tracks[1]} volume={this.props.volume}/>

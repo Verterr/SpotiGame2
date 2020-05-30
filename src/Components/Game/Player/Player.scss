@@ -3,6 +3,8 @@
     width: auto;
     display: flex;
     h3 {
+      text-align: center;
+      text-overflow: clip;
       justify-content: center;
       margin: auto auto;
       padding: 0;
