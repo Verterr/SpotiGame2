@@ -4,7 +4,8 @@ import './Card.css';
 
 import Player from "../Player/Player";
 import Loader from "../Loader/Loader";
-import {Card as CardTemplate, CardHeader, CardMedia, CardContent} from "@material-ui/core";
+import {Card as CardTemplate, CardHeader, CardContent} from "@material-ui/core";
+import CardMedia from "@material-ui/core/CardMedia";
 
 import {getArtistTracks} from "../../../Containers/Game/gameLogic";
 
@@ -37,8 +38,8 @@ class Card extends Component {
             console.log(this.props.artist.images);
             card = (<div>
                     <CardTemplate className="cardTemplate">
-                        <CardHeader title={this.props.artist.name} subheader={`Genres: ${this.props.artist.genres.join(', ')}`}/>
-                        <CardMedia image={this.props.artist.images[0].url} title={this.props.artist.name+" photo"}/>
+                        <CardHeader title={this.props.artist.name} subheader={`Genres: ${this.props.artist.genres.filter((value, i) => i<=3).join(', ')}`}/>
+                        <img className="artistPhoto" src={this.props.artist.images[1].url} alt={this.props.artist.name}/>
                         <CardContent className="cardPlayers">
                             <Player trackPrev={this.state.tracks[0]} volume={this.props.volume}/>
                             <Player trackPrev={this.state.tracks[1]} volume={this.props.volume}/>

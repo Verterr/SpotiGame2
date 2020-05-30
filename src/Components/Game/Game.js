@@ -91,9 +91,10 @@ class Game extends Component {
                             </Fab>
                         </div>
                         <div className="cardGrid">
-                            <ArtistCard className="artistCard1" artist={this.state.relatedArtists[this.state.i]} volume={this.state.volume}/>
-                            <ArtistCard className="artistCard2" artist={this.state.relatedArtists[this.state.i]} volume={this.state.volume}/>
-                            <ArtistCard className="artistCard3" artist={this.state.relatedArtists[this.state.i]} volume={this.state.volume}/>
+                            <ArtistCard artist={this.state.relatedArtists[this.state.i]} volume={this.state.volume}/>
+                            <ArtistCard artist={this.state.relatedArtists[this.state.i+1]} volume={this.state.volume}/>
+                            <ArtistCard artist={this.state.relatedArtists[this.state.i+2]} volume={this.state.volume}/>
+                            <ArtistCard artist={this.state.relatedArtists[this.state.i+3]} volume={this.state.volume}/>
                         </div>
                     </div>)
             }

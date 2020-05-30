@@ -9,7 +9,6 @@ export const renderGame = () => {
     spotifyWebApi.setAccessToken(localStorage.getItem('token'));
 
     let x = Math.floor(Math.random()*3);
-    console.log(x);
 
     return dispatch => {
 
@@ -19,20 +18,15 @@ export const renderGame = () => {
                 dispatch(getFirstArtist(firstArtist.id));
                 getRelatedArtist(firstArtist.id).then(res => {
                         x = Math.floor(Math.random()*3);
-                        console.log(res.artists[x]);
                         getRelatedArtist(res.artists[x].id).then(res => {
                             x = Math.floor(Math.random()*3);
-                            console.log(res.artists[x]);
                             getRelatedArtist(res.artists[x].id).then(res => {
                                 x = Math.floor(Math.random()*3);
-                                console.log(res.artists[x]);
                                 getRelatedArtist(res.artists[x].id).then(res => {
                                     x = Math.floor(Math.random()*3);
-                                    console.log(res.artists[x]);
                                     getRelatedArtist(res.artists[x].id).then(res => {
                                         x = Math.floor(Math.random()*3);
                                         dispatch(initTargetArtist(res.artists[x]));
-                                        console.log(res.artists[x]);
                                         dispatch(loadingPauser());
                                     })
                                 })

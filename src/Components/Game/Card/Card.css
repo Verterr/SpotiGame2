@@ -1,5 +1,9 @@
 .cardTemplate {
-  width: 30vw;
+  width: 20vw;
+  max-height: 80%;
+}
+.cardTemplate .artistPhoto {
+  width: 100%;
 }
 
 /*# sourceMappingURL=Card.css.map */
