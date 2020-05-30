@@ -1,43 +1,44 @@
 .game {
-  display: grid;
-  grid-template-columns: 1fr 2fr 0.7fr 2fr 0.7fr 2fr 1fr;
-}
-.game .card {
-  margin-top: 5%;
-  border: 1px solid black;
-  height: 90%;
-  width: auto;
-  max-height: 80vh;
-  max-width: 20vw;
-  border-radius: 20px;
-}
-.game .card .selectArtistButton {
-  margin-top: 7%;
+  position: absolute;
   width: 100%;
-  height: 7%;
-  border-radius: 10px;
+  height: 90%;
+  top: 10%;
 }
-.game .game-nav {
-  grid-column-start: 3;
-  grid-column-end: 6;
-  border: 1px solid black;
-  margin-top: 4%;
-  margin-bottom: auto;
+.game .navGame {
   display: flex;
+  max-height: 10%;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+.game .navGame .gameNavMenu {
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  align-items: center;
   justify-content: space-between;
-  border-radius: 20px;
 }
-.game .card1 {
-  grid-column-start: 2;
-  grid-column-end: 3;
+.game .navGame .gameNavMenu #slider {
+  width: 10vw;
+  margin-right: 2vw;
 }
-.game .card2 {
-  grid-column-start: 4;
-  grid-column-end: 5;
+.game .navGame .gameNavMenu Button {
+  background: #1DB954;
+  color: #edf5e6;
+  margin-left: 2vw;
+  width: 10vw;
 }
-.game .card3 {
-  grid-column-start: 6;
-  grid-column-end: 7;
+.game .navGame .navButton {
+  background: #1DB954;
+  color: #edf5e6;
+  width: 10vw;
+}
+.game .cardGrid {
+  position: relative;
+  height: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 /*# sourceMappingURL=Game.css.map */

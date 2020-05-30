@@ -34,7 +34,7 @@ class GamePage extends Component {
         }
         return (
             <div className="gamePage">
-                <TopNavBar loggedIn={this.state.loggedIn}/>
+                {/*<TopNavBar loggedIn={this.state.loggedIn}/>*/}
                 {page}
             </div>
         )

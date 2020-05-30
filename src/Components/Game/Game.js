@@ -4,8 +4,9 @@ import {getRelatedArtist} from "../../Containers/Game/gameLogic";
 import * as actions from "../../store/actions/gameLogic";
 import Loader from "./Loader/Loader";
 import CurrentArtistCard from "./CurrentArtistCard/CurrentArtistCard";
-
-import Card from './Card/Card';
+import Button from "@material-ui/core/Button";
+import {Card, Fab, Slider} from "@material-ui/core";
+import ArtistCard from './Card/Card';
 import './Game.css';
 
 
@@ -15,7 +16,8 @@ class Game extends Component {
         relatedArtists: '',
         i: 2,
         loading: true,
-        currentArtistPageOpen: false
+        currentArtistPageOpen: false,
+        volume: 0.1
     };
 
     nextArtist = () => {
@@ -54,6 +56,12 @@ class Game extends Component {
             });
     }
 
+    volumeChange = (event, newValue) => {
+        this.setState({
+            volume: newValue
+        })
+    }
+
     render() {
         let page = <Loader/>;
         if(!this.state.loading) {
@@ -62,28 +70,30 @@ class Game extends Component {
             } else {
                 page = (
                     <div className="game">
-                        <div className="game-nav">
-                            <button onClick={this.prevArtist}>Prev</button>
-                            <button onClick={this.openCurrentArtistPage}>Your Target</button>
-                            <button onClick={this.nextArtist}>Next</button>
+                        <div className="navGame">
+                            <Fab className="navButton" variant="extended">
+                                Prev card
+                            </Fab>
+                            <Card className="gameNavMenu">
+                                <Button>Artist List</Button>
+                                <h2>Step: 10</h2>
+                                <Slider id="slider"
+                                        aria-labelledby="continuous-slider"
+                                        min={0}
+                                        max={100}
+                                        step={1}
+                                        onChange={this.volumeChange}
+                                        defaultValue={0.5}
+                                />
+                            </Card>
+                            <Fab className="navButton" variant="extended">
+                                Next card
+                            </Fab>
                         </div>
-                        <div className="card card1">
-                            <Card artist={this.state.relatedArtists[this.state.i-2]}/>
-                            <button className="selectArtistButton"
-                                    onClick={() => this.setCurrentArtistHandler(this.state.relatedArtists[this.state.i-2].id)}
-                            >SELECT</button>
-                        </div>
-                        <div className="card card2">
-                            <Card artist={this.state.relatedArtists[this.state.i-1]}/>
-                            <button className="selectArtistButton"
-                                    onClick={() => this.setCurrentArtistHandler(this.state.relatedArtists[this.state.i-1].id)}
-                            >SELECT</button>
-                        </div>
-                        <div className="card card3">
-                            <Card artist={this.state.relatedArtists[this.state.i]}/>
-                            <button className="selectArtistButton"
-                                    onClick={() => this.setCurrentArtistHandler(this.state.relatedArtists[this.state.i].id)}
-                            >SELECT</button>
+                        <div className="cardGrid">
+                            <ArtistCard className="artistCard1" artist={this.state.relatedArtists[this.state.i]} volume={this.state.volume}/>
+                            <ArtistCard className="artistCard2" artist={this.state.relatedArtists[this.state.i]} volume={this.state.volume}/>
+                            <ArtistCard className="artistCard3" artist={this.state.relatedArtists[this.state.i]} volume={this.state.volume}/>
                         </div>
                     </div>)
             }
