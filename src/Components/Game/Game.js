@@ -5,7 +5,7 @@ import * as actions from "../../store/actions/gameLogic";
 import Loader from "./Loader/Loader";
 import CurrentArtistCard from "./CurrentArtistCard/CurrentArtistCard";
 import Button from "@material-ui/core/Button";
-import {Card, Fab, Slider} from "@material-ui/core";
+import {Card, Fab, Slider, Typography} from "@material-ui/core";
 import ArtistCard from './Card/Card';
 import './Game.css';
 
@@ -17,7 +17,7 @@ class Game extends Component {
         i: 2,
         loading: true,
         currentArtistPageOpen: false,
-        volume: 0.1
+        volume: 0.5
     };
 
     nextArtist = () => {
@@ -77,14 +77,19 @@ class Game extends Component {
                             <Card className="gameNavMenu">
                                 <Button>Artist List</Button>
                                 <h2>Step: 10</h2>
-                                <Slider id="slider"
-                                        aria-labelledby="continuous-slider"
-                                        min={0}
-                                        max={100}
-                                        step={1}
-                                        onChange={this.volumeChange}
-                                        defaultValue={0.5}
-                                />
+                                <div className="volumeContainer">
+                                    <Slider id="slider"
+                                            aria-labelledby="continuous-slider"
+                                            min={0}
+                                            max={1}
+                                            step={0.01}
+                                            onChange={this.volumeChange}
+                                            defaultValue={0.5}
+                                    />
+                                    <Typography gutterBottom>
+                                        Volume
+                                    </Typography>
+                                </div>
                             </Card>
                             <Fab className="navButton" variant="extended">
                                 Next card
