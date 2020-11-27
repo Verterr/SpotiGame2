@@ -1,17 +1,22 @@
 .player {
-  margin: 3% 3%;
+  height: 50px;
+  margin: 10px;
   width: auto;
   display: flex;
 }
-.player h3 {
-  text-align: center;
-  text-overflow: clip;
-  justify-content: center;
-  margin: auto auto;
-  padding: 0;
+.player .albumImg {
+  width: 50px;
 }
-.player Fab {
-  background: #1DB954;
+.player .MuiTypography-body1, .player .MuiTypography-body2 {
+  white-space: nowrap;
+  width: 12vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.player .playerIcon {
+  margin-right: 15px;
+  width: 40px;
+  height: 40px;
 }
 
 /*# sourceMappingURL=Player.css.map */

@@ -1,15 +1,20 @@
 .player {
-    margin: 3% 3%;
+    height: 50px;
+    margin: 10px;
     width: auto;
     display: flex;
-    h3 {
-      text-align: center;
-      text-overflow: clip;
-      justify-content: center;
-      margin: auto auto;
-      padding: 0;
+    .albumImg {
+      width: 50px;
     }
-    Fab {
-      background: #1DB954;
+    .MuiTypography-body1, .MuiTypography-body2{
+      white-space: nowrap;
+      width: 12vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .playerIcon {
+      margin-right: 15px;
+      width: 40px;
+      height: 40px;
     }
   }
