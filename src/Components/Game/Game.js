@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {getRelatedArtist} from "../../Containers/Game/gameLogic";
 import * as actions from "../../store/actions/gameLogic";
 import Loader from "./Loader/Loader";
-import CurrentArtistCard from "./CurrentArtistCard/CurrentArtistCard";
+import CardsDialog from "./CardsDialog/CardsDialog";
 import Button from "@material-ui/core/Button";
 import {Card, Fab, Slider} from "@material-ui/core";
 import ArtistCard from './Card/Card';
@@ -16,7 +16,7 @@ class Game extends Component {
         relatedArtists: '',
         i: 2,
         loading: true,
-        currentArtistPageOpen: false,
+        cardsDialog: false,
         volume: 0.1
     };
 
@@ -41,12 +41,12 @@ class Game extends Component {
             });
     };
 
-    openCurrentArtistPage = () => {
-         this.setState({currentArtistPageOpen: true});
+    openCardsDialog = () => {
+         this.setState({cardsDialog: true});
     };
 
-    closeCurrentArtistPage = () => {
-        this.setState({currentArtistPageOpen: false})
+    closeCardsDialog = () => {
+        this.setState({cardsDialog: false})
     };
 
     componentWillMount() {
@@ -64,18 +64,20 @@ class Game extends Component {
 
     render() {
         let page = <Loader/>;
+        let dialog = null;
         if(!this.state.loading) {
-            if(this.state.currentArtistPageOpen) {
-                page = <CurrentArtistCard closeCurrentArtistPage={() => this.setState({currentArtistPageOpen: false})}/>
-            } else {
-                page = (
+            if(this.state.cardsDialog) {
+                dialog = <CardsDialog closeCardsDialog={this.closeCardsDialog} cardsDialog={this.state.cardsDialog}/>
+            }
+            page = (
                     <div className="game">
+                        {dialog}
                         <div className="navGame">
                             <Fab className="navButton" variant="extended">
                                 Prev card
                             </Fab>
                             <Card className="gameNavMenu">
-                                <Button>Artist List</Button>
+                                <Button onClick={this.openCardsDialog}>Artist List</Button>
                                 <h2>Step: 10</h2>
                                 <Slider id="slider"
                                         aria-labelledby="continuous-slider"
@@ -98,7 +100,6 @@ class Game extends Component {
                         </div>
                     </div>)
             }
-        }
         return page;
     }
 }

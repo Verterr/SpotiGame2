@@ -5,7 +5,6 @@ import './Card.css';
 import Player from "../Player/Player";
 import Loader from "../Loader/Loader";
 import {Card as CardTemplate, CardHeader, CardContent, List} from "@material-ui/core";
-import CardMedia from "@material-ui/core/CardMedia";
 
 import {getArtistTracks} from "../../../Containers/Game/gameLogic";
 
@@ -35,10 +34,9 @@ class Card extends Component {
     render() {
         let card = <Loader/>;
         if(!this.state.loading) {
-            card = (<div>
-                    <CardTemplate className="cardTemplate">
+            card = (<CardTemplate className="cardTemplate" style={this.props.style}>
                         <CardHeader className="artistHeader" title={this.props.artist.name} subheader={`Genres: ${this.props.artist.genres.filter((value, i) => i<=3).join(', ')}`}/>
-                        <div className="artistPhoto">
+                        <div style={this.props.style} className="artistPhoto">
                             <img src={this.props.artist.images[1].url} alt={this.props.artist.name}/>
                         </div>
                         <CardContent>
@@ -49,8 +47,7 @@ class Card extends Component {
                                 <Player trackPrev={this.state.tracks[3]} volume={this.props.volume}/>
                             </List>
                         </CardContent>
-                    </CardTemplate>
-                    </div>)
+                    </CardTemplate>)
         }
         return(
             <div className="cardTemplate">

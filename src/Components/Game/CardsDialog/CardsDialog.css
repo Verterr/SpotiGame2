@@ -1,0 +1,14 @@
+.cardsDialog .closeButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 5px;
+}
+.cardsDialog .MuiDialogContent-root {
+  display: flex;
+}
+.cardsDialog .MuiDialogContent-root .cardInDialog {
+  margin: 30px;
+}
+
+/*# sourceMappingURL=CardsDialog.css.map */
