@@ -12,7 +12,7 @@ import "./Game.css";
 class Game extends Component {
   state = {
     relatedArtists: "",
-    i: 2,
+    cardId: 2,
     loading: true,
     cardsDialog: false,
     volume: 0.1,
@@ -20,15 +20,11 @@ class Game extends Component {
   };
 
   nextArtist = () => {
-    if (this.state.i < this.state.relatedArtists.length - 2) {
-      this.setState({ i: this.state.i + 1 });
-    }
+      this.setState({ cardId: this.state.cardId + 1 });
   };
 
   prevArtist = () => {
-    if (this.state.i > 2) {
-      this.setState({ i: this.state.i - 1 });
-    }
+      this.setState({ i: this.state.cardId - 1 });
   };
 
   setCurrentArtistHandler = (id) => {
@@ -75,7 +71,7 @@ class Game extends Component {
         <div className="game">
           {dialog}
           <div className="navGame">
-            <Fab className="navButton" variant="extended">
+            <Fab className="navButton" variant="extended" onClick={this.prevArtist} disabled={this.state.cardId === 2}>
               Prev card
             </Fab>
             <Card className="gameNavMenu">
@@ -94,25 +90,25 @@ class Game extends Component {
                 <Typography gutterBottom>Volume</Typography>
               </div>
             </Card>
-            <Fab className="navButton" variant="extended">
+            <Fab className="navButton" variant="extended" onClick={this.nextArtist} disabled={this.state.cardId === this.state.relatedArtists.length - 4}>
               Next card
             </Fab>
           </div>
           <div className="cardGrid">
             <ArtistCard
-              artist={this.state.relatedArtists[this.state.i]}
+              artist={this.state.relatedArtists[this.state.cardId]}
               volume={this.state.volume}
             />
             <ArtistCard
-              artist={this.state.relatedArtists[this.state.i + 1]}
+              artist={this.state.relatedArtists[this.state.cardId + 1]}
               volume={this.state.volume}
             />
             <ArtistCard
-              artist={this.state.relatedArtists[this.state.i + 2]}
+              artist={this.state.relatedArtists[this.state.cardId + 2]}
               volume={this.state.volume}
             />
             <ArtistCard
-              artist={this.state.relatedArtists[this.state.i + 3]}
+              artist={this.state.relatedArtists[this.state.cardId + 3]}
               volume={this.state.volume}
             />
           </div>
