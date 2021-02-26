@@ -41,5 +41,12 @@
     height: 70%;
     display: flex;
     justify-content: space-around;
+    .gameCardBox {
+      Button {
+        width: 100%;
+        margin-top: 20px;
+        background: #1DB954;
+      }
+    }
   }
 }

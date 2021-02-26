@@ -20,11 +20,11 @@ class Game extends Component {
   };
 
   nextArtist = () => {
-      this.setState({ cardId: this.state.cardId + 1 });
+    this.setState({ cardId: this.state.cardId + 1 });
   };
 
   prevArtist = () => {
-      this.setState({ i: this.state.cardId - 1 });
+    this.setState({ i: this.state.cardId - 1 });
   };
 
   setCurrentArtistHandler = (id) => {
@@ -72,7 +72,12 @@ class Game extends Component {
         <div className="game">
           {dialog}
           <div className="navGame">
-            <Fab className="navButton" variant="extended" onClick={this.prevArtist} disabled={this.state.cardId === 2}>
+            <Fab
+              className="navButton"
+              variant="extended"
+              onClick={this.prevArtist}
+              disabled={this.state.cardId === 2}
+            >
               Prev card
             </Fab>
             <Card className="gameNavMenu">
@@ -91,27 +96,82 @@ class Game extends Component {
                 <Typography gutterBottom>Volume</Typography>
               </div>
             </Card>
-            <Fab className="navButton" variant="extended" onClick={this.nextArtist} disabled={this.state.cardId === this.state.relatedArtists.length - 4}>
+            <Fab
+              className="navButton"
+              variant="extended"
+              onClick={this.nextArtist}
+              disabled={
+                this.state.cardId === this.state.relatedArtists.length - 4
+              }
+            >
               Next card
             </Fab>
           </div>
           <div className="cardGrid">
-            <ArtistCard
-              artist={this.state.relatedArtists[this.state.cardId]}
-              volume={this.state.volume}
-            />
-            <ArtistCard
-              artist={this.state.relatedArtists[this.state.cardId + 1]}
-              volume={this.state.volume}
-            />
-            <ArtistCard
-              artist={this.state.relatedArtists[this.state.cardId + 2]}
-              volume={this.state.volume}
-            />
-            <ArtistCard
-              artist={this.state.relatedArtists[this.state.cardId + 3]}
-              volume={this.state.volume}
-            />
+            <div className="gameCardBox">
+              <ArtistCard
+                artist={this.state.relatedArtists[this.state.cardId]}
+                volume={this.state.volume}
+              />
+              <Button
+                variant="outlined"
+                onClick={() =>
+                  this.setCurrentArtistHandler(
+                    this.state.relatedArtists[this.state.cardId].id
+                  )
+                }
+              >
+                Select
+              </Button>
+            </div>
+            <div className="gameCardBox">
+              <ArtistCard
+                artist={this.state.relatedArtists[this.state.cardId + 1]}
+                volume={this.state.volume}
+              />
+              <Button
+                variant="outlined"
+                onClick={() =>
+                  this.setCurrentArtistHandler(
+                    this.state.relatedArtists[this.state.cardId + 1].id
+                  )
+                }
+              >
+                Select
+              </Button>
+            </div>
+            <div className="gameCardBox">
+              <ArtistCard
+                artist={this.state.relatedArtists[this.state.cardId + 2]}
+                volume={this.state.volume}
+              />
+              <Button
+                variant="outlined"
+                onClick={() =>
+                  this.setCurrentArtistHandler(
+                    this.state.relatedArtists[this.state.cardId + 2].id
+                  )
+                }
+              >
+                Select
+              </Button>
+            </div>
+            <div className="gameCardBox">
+              <ArtistCard
+                artist={this.state.relatedArtists[this.state.cardId + 3]}
+                volume={this.state.volume}
+              />
+              <Button
+                variant="outlined"
+                onClick={() =>
+                  this.setCurrentArtistHandler(
+                    this.state.relatedArtists[this.state.cardId + 3].id
+                  )
+                }
+              >
+                Select
+              </Button>
+            </div>
           </div>
         </div>
       );
