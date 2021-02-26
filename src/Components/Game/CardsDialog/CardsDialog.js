@@ -18,15 +18,15 @@ class CardsDialog extends Component {
                     <DialogContent>
                         <div className="cardInDialog">
                             <h2>First Card</h2>
-                            <Card artist={this.props.firstArtist}/>
+                            <Card artist={this.props.firstArtist} volume={this.props.volume}/>
                         </div>
                         <div className="cardInDialog">
                             <h2>Current Card</h2>
-                            <Card style={{backgroundColor: "#D9F8FF"}} artist={this.props.currentArtist}/>
+                            <Card style={{backgroundColor: "#D9F8FF"}} artist={this.props.currentArtist} volume={this.props.volume}/>
                         </div>
                         <div className="cardInDialog">
                             <h2>Target Card</h2>
-                            <Card style={{backgroundColor: "#E7E3A4"}} className="targetCard" artist={this.props.targetArtist}/>
+                            <Card style={{backgroundColor: "#E7E3A4"}} className="targetCard" artist={this.props.targetArtist} volume={this.props.volume}/>
                         </div>
                     </DialogContent>
                 </Dialog>

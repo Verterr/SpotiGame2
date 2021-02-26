@@ -64,6 +64,7 @@ class Game extends Component {
           <CardsDialog
             closeCardsDialog={this.closeCardsDialog}
             cardsDialog={this.state.cardsDialog}
+            volume={this.state.volume}
           />
         );
       }
